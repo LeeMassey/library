@@ -1,0 +1,28 @@
+#container {
+	width: 100%;
+	min-width: 540px;
+	border: 1px solid red;
+	display: flex;
+	justify-content: center;
+}
+
+#books {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	max-width: 1012px;
+	border: 1px solid black;
+	padding: 15px;
+}
+
+.book-card {
+	width: 200px;
+	height: 200px;
+	border: 1px solid blue;
+	margin: 15px;
+	padding: 10px;
+}
+
+.book-card span {
+	display: block;
+}
