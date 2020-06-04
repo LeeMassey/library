@@ -1,41 +1,66 @@
-let button = document.querySelector("button");
+let addBookForm = document.querySelector("#add-book");
+let addBookButton = document.querySelector("#submit-book");
+let showFormButton = document.querySelector("#show-form");
 let books = document.querySelector("#books");
-	button.addEventListener("click", addBook);
 
-	let library = [];
+showFormButton.addEventListener("click", toggleForm);
 
-	function Book(title, author, pages, status) {
-		this.title = title,
-		this.author = author,
-		this.pages = pages,
-		this.status = status,
-		this.info = function() {
-		 return title + " by " + author + ", " + pages + " pages long, " + status + ".";
+addBookForm.addEventListener("keyup", function() {
+	if (event.key === "Enter") {
+		event.preventDefault();
+		addBookButton.click();
+	}
+});
+
+addBookButton.addEventListener("click", addBook);
+
+let library = [];
+
+function Book(title, author, pages, status) {
+	this.title = title,
+	this.author = author,
+	this.pages = pages,
+	this.status = status,
+	this.info = function() {
+	 return title + " by " + author + ", " + pages + " pages long, " + status + ".";
 	};
-	}
+}
 
-	function addBook() {
-		let t = prompt("Title:");
-		let a = prompt("Author:");
-		let p = prompt("Pages:");
-		let s = prompt("Read?");
-		let book = new Book(t, a, p, s);
-		library.push(book);
-		console.log(library);
-		render();
-	}
+function toggleForm() {
+	addBookForm.classList.toggle("hide-form");
+}
 
-	function render() {
-		books.innerHTML = "";
-		for (e in library) {
-			books.innerHTML += "<div class='book-card'>" +
-								"<span class='title'>Title: " + library[e].title + "</span>" +
-								"<span class='author'>Author: " + library[e].author + "</span>" +
-								"<span class='pages'>Pages: " + library[e].pages + "</span>" +
-								"<span class='read-status'>Read? " + library[e].status + "</span>" +
-								"</div>";
-		}
+function addBook() {
+	let t = document.querySelector("#book-title").value; //prompt("Title:");
+	let a = document.querySelector("#book-author").value; //prompt("Author:");
+	let p = document.querySelector("#book-pages").value; //prompt("Pages:");
+	let s = document.querySelector("#read-status").checked; //prompt("Read?");
+	let book = new Book(t, a, p, s);
+	library.push(book);
+	clearInputs();
+	toggleForm();
+	render();
+}
+
+function clearInputs() {
+	let inputs = document.querySelectorAll("input");
+	for (e in inputs) {
+		inputs[e].value ="";
 	}
+	document.querySelector("#read-status").checked = false;
+}
+
+function render() {
+	books.innerHTML = "";
+	for (e in library) {
+		books.innerHTML += "<div class='book-card'>" +
+							"<span class='title'>Title: " + library[e].title + "</span>" +
+							"<span class='author'>Author: " + library[e].author + "</span>" +
+							"<span class='pages'>Pages: " + library[e].pages + "</span>" +
+							"<span class='read-status'>Read? " + library[e].status + "</span>" +
+							"</div>";
+	}
+}
 
 let book1 = new Book("The Client", "John Grisham", "498", "Yes");
 let book2 = new Book("A Tale of Two Cities", "Charles Dickens", "835", "No");
@@ -45,4 +70,5 @@ library.push(book1);
 library.push(book2);
 library.push(book3);
 library.push(book4);
+
 render();

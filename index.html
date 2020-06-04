@@ -13,9 +13,41 @@
 
 <body>
 
-	<button>ADD BOOK</button>
+	<button id="show-form">ADD BOOK</button>
 
 	<div id="container">
+
+		<div id="add-book" class="hide-form">
+
+		<form id="add-book-form">
+
+			<div>
+				<h1>Add A Book</h1>
+			</div>
+
+			<div>
+				<label for="book-title">Title: </label>
+				<input type="text" id="book-title" name="book-title" class="float-right" />
+			</div>
+			<div>
+				<label for="book-author">Author: </label>
+				<input type="text" id="book-author" name="book-author" class="float-right" />
+			</div>
+			<div>
+				<label for="book-pages">Pages: </label>
+				<input type="text" id="book-pages" name="book-pages" class="float-right" />
+			</div>
+			<div>
+				<label for="read-status">Read? </label>
+				<input type="checkbox" id="read-status" name="read-status" value="true" />
+			</div>
+			<div>
+				<button type="button" id="submit-book">Add</button>
+			</div>
+
+		</form>
+
+	</div>
 
 		<div id="books">
 
