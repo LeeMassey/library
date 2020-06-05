@@ -1,9 +1,11 @@
 let addBookForm = document.querySelector("#add-book");
 let addBookButton = document.querySelector("#submit-book");
 let showFormButton = document.querySelector("#show-form");
+let closeFormButton = document.querySelector("#close-form");
 let books = document.querySelector("#books");
 
 showFormButton.addEventListener("click", toggleForm);
+closeFormButton.addEventListener("click", toggleForm);
 
 addBookForm.addEventListener("keyup", function() {
 	if (event.key === "Enter") {
@@ -31,15 +33,27 @@ function toggleForm() {
 }
 
 function addBook() {
-	let t = document.querySelector("#book-title").value; //prompt("Title:");
-	let a = document.querySelector("#book-author").value; //prompt("Author:");
-	let p = document.querySelector("#book-pages").value; //prompt("Pages:");
-	let s = document.querySelector("#read-status").checked; //prompt("Read?");
-	let book = new Book(t, a, p, s);
-	library.push(book);
-	clearInputs();
-	toggleForm();
-	render();
+	let t = document.querySelector("#book-title").value;
+	let a = document.querySelector("#book-author").value;
+	let p = document.querySelector("#book-pages").value;
+	let s = document.querySelector("#read-status").checked;
+
+	if (t != "" && a != "" && p != "" && typeof(Number(p)) === "number") {
+		if (s === true) {
+			s = "Yes";
+		}
+		else {
+			s = "No";
+		}
+		let book = new Book(t, a, p, s);
+		library.push(book);
+		clearInputs();
+		toggleForm();
+		render();
+	}
+	else {
+		alert("Please check that all fields are correct, and try again.");
+	}
 }
 
 function clearInputs() {
@@ -61,6 +75,8 @@ function render() {
 							"</div>";
 	}
 }
+
+/***** This is just to have some "books" present when page loads, since there is no actual persistent data at this point in time. *****/
 
 let book1 = new Book("The Client", "John Grisham", "498", "Yes");
 let book2 = new Book("A Tale of Two Cities", "Charles Dickens", "835", "No");
