@@ -3,17 +3,28 @@ body {
 	font-family: sans-serif;
 }
 
-#container {
-	width: 100%;
-	min-width: 540px;
+#page-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#edit-buttons {
 	display: flex;
 	justify-content: center;
+
+}
+
+#books-container {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	min-width: 540px;
 }
 
 #books {
 	display: flex;
 	flex-wrap: wrap;
-	width: 100%;
 	max-width: 1012px;
 	padding: 15px;
 	background: rgba(0, 0, 0, 0.05);
@@ -22,8 +33,10 @@ body {
 }
 
 .book-card {
-	width: 200px;
-	height: 200px;
+	display: flex;
+	flex-direction: column;
+	width: 190px;
+	height: 230px;
 	margin: 15px;
 	padding: 10px;
 	background: white;
@@ -32,9 +45,23 @@ body {
 	text-align: center;
 }
 
+.card-top {
+	overflow-wrap: break-word;
+	overflow: auto;
+	height: 75%;
+}
+
+.card-bottom {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	margin-top: 5%;
+	height: 20%;
+}
+
 .book-card span {
 	display: block;
-}
+};
 
 #show-form {
 	cursor: pointer;
@@ -111,5 +138,5 @@ label {
 }
 
 .pages, .read-status {
-	margin: 12px;
+	margin-bottom: 15px;
 }

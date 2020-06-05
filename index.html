@@ -13,44 +13,50 @@
 
 <body>
 
-	<button id="show-form">ADD BOOK</button>
+	<div id="page-container">
+		<div id="edit-buttons">
+			<button id="show-form">ADD BOOK</button>
+			<button id="edit-books">EDIT BOOKS</button>
+		</div>
 
-	<div id="container">
+		<div id="books-container">
 
-		<div id="add-book" class="hide-form">
+			<div id="add-book" class="hide-form">
 
-		<form id="add-book-form">
+			<form id="add-book-form">
 
-			<div>
-				<div id="close-form">X</div>
-				<h1>Add A Book</h1>
+				<div>
+					<div id="close-form">X</div>
+					<h1>Add A Book</h1>
+				</div>
+
+				<div>
+					<label for="book-title">Title: </label>
+					<input type="text" id="book-title" name="book-title" class="float-right" />
+				</div>
+				<div>
+					<label for="book-author">Author: </label>
+					<input type="text" id="book-author" name="book-author" class="float-right" />
+				</div>
+				<div>
+					<label for="book-pages">Pages: </label>
+					<input type="number" id="book-pages" name="book-pages" class="float-right" />
+				</div>
+				<div class="checkbox">
+					<label for="read-status">Read? </label>
+					<input type="checkbox" id="read-status" name="read-status" value="true" />
+				</div>
+				<div>
+					<button type="button" id="submit-book">Add</button>
+				</div>
+
+			</form>
+
+		</div>
+
+			<div id="books">
+
 			</div>
-
-			<div>
-				<label for="book-title">Title: </label>
-				<input type="text" id="book-title" name="book-title" class="float-right" />
-			</div>
-			<div>
-				<label for="book-author">Author: </label>
-				<input type="text" id="book-author" name="book-author" class="float-right" />
-			</div>
-			<div>
-				<label for="book-pages">Pages: </label>
-				<input type="number" id="book-pages" name="book-pages" class="float-right" />
-			</div>
-			<div class="checkbox">
-				<label for="read-status">Read? </label>
-				<input type="checkbox" id="read-status" name="read-status" value="true" />
-			</div>
-			<div>
-				<button type="button" id="submit-book">Add</button>
-			</div>
-
-		</form>
-
-	</div>
-
-		<div id="books">
 
 		</div>
 

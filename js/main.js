@@ -1,11 +1,17 @@
 let addBookForm = document.querySelector("#add-book");
 let addBookButton = document.querySelector("#submit-book");
+let editBooksButton = document.querySelector("#edit-books");
 let showFormButton = document.querySelector("#show-form");
 let closeFormButton = document.querySelector("#close-form");
+let deleteButtons = document.querySelector(".delete-button");
 let books = document.querySelector("#books");
+let editDisplay = "none";
+let deleteIndex = 0;
 
 showFormButton.addEventListener("click", toggleForm);
 closeFormButton.addEventListener("click", toggleForm);
+addBookButton.addEventListener("click", addBook);
+editBooksButton.addEventListener("click", toggleEdit);
 
 addBookForm.addEventListener("keyup", function() {
 	if (event.key === "Enter") {
@@ -13,8 +19,6 @@ addBookForm.addEventListener("keyup", function() {
 		addBookButton.click();
 	}
 });
-
-addBookButton.addEventListener("click", addBook);
 
 let library = [];
 
@@ -30,6 +34,16 @@ function Book(title, author, pages, status) {
 
 function toggleForm() {
 	addBookForm.classList.toggle("hide-form");
+}
+
+function toggleEdit() {
+	if (editDisplay === "none") {
+		editDisplay = "block";
+	}
+	else {
+		editDisplay = "none";
+	}
+	render();
 }
 
 function addBook() {
@@ -56,6 +70,11 @@ function addBook() {
 	}
 }
 
+function deleteBook(d) {
+	library.splice(d, 1);
+	render();
+}
+
 function clearInputs() {
 	let inputs = document.querySelectorAll("input");
 	for (e in inputs) {
@@ -66,13 +85,15 @@ function clearInputs() {
 
 function render() {
 	books.innerHTML = "";
+	deleteIndex = 0;
 	for (e in library) {
 		books.innerHTML += "<div class='book-card'>" +
-							"<span class='title'>" + library[e].title + "</span>" +
-							"<span class='author'>by " + library[e].author + "</span>" +
-							"<span class='pages'>" + library[e].pages + " pages</span>" +
-							"<span class='read-status'>Read? " + library[e].status + "</span>" +
-							"</div>";
+							"<div class='card-top'><span class='title'>" + library[e].title + "</span>" +
+							"<span class='author'>by " + library[e].author + "</span></div>" +
+							"<div class='card-bottom'><span class='pages'>" + library[e].pages + " pages</span>" +
+							"<span class='read-status'>Read? " + library[e].status + "</span></div>" +
+							"<div style='background: darkred; color: white; padding: 7px; cursor: pointer; display: " + editDisplay + "' onclick='deleteBook(" + deleteIndex + ")'>Delete</div></div>";
+		deleteIndex++;
 	}
 }
 
