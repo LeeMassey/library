@@ -68,9 +68,9 @@ function render() {
 	books.innerHTML = "";
 	for (e in library) {
 		books.innerHTML += "<div class='book-card'>" +
-							"<span class='title'>Title: " + library[e].title + "</span>" +
-							"<span class='author'>Author: " + library[e].author + "</span>" +
-							"<span class='pages'>Pages: " + library[e].pages + "</span>" +
+							"<span class='title'>" + library[e].title + "</span>" +
+							"<span class='author'>by " + library[e].author + "</span>" +
+							"<span class='pages'>" + library[e].pages + " pages</span>" +
 							"<span class='read-status'>Read? " + library[e].status + "</span>" +
 							"</div>";
 	}

@@ -1,7 +1,11 @@
+body {
+	background: #D5DDBC;
+	font-family: sans-serif;
+}
+
 #container {
 	width: 100%;
 	min-width: 540px;
-	border: 1px solid red;
 	display: flex;
 	justify-content: center;
 }
@@ -11,16 +15,21 @@
 	flex-wrap: wrap;
 	width: 100%;
 	max-width: 1012px;
-	border: 1px solid black;
 	padding: 15px;
+	background: rgba(0, 0, 0, 0.05);
+	border-radius: 5px;
+	box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.15);
 }
 
 .book-card {
 	width: 200px;
 	height: 200px;
-	border: 1px solid blue;
 	margin: 15px;
 	padding: 10px;
+	background: white;
+	border-radius: 5px;
+	box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.15);
+	text-align: center;
 }
 
 .book-card span {
@@ -86,4 +95,21 @@
 
 label {
 	margin-right: 12px;
+}
+
+.title {
+	font-size: 1.35em;
+	font-weight: bold;
+	margin: 12px;
+}
+
+.author {
+	font-size: .85em;
+	font-style: italic;
+	margin: 12px;
+	margin-bottom: 30px;
+}
+
+.pages, .read-status {
+	margin: 12px;
 }
