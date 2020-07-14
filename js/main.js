@@ -75,6 +75,16 @@ function deleteBook(d) {
 	render();
 }
 
+function changeStatus(x) {
+	if (library[x].status == "Yes") {
+		library[x].status = "No";
+	}
+	else {
+		library[x].status = "Yes";
+	}
+	render();
+}
+
 function clearInputs() {
 	let inputs = document.querySelectorAll("input");
 	for (e in inputs) {
@@ -91,7 +101,7 @@ function render() {
 							"<div class='card-top'><span class='title'>" + library[e].title + "</span>" +
 							"<span class='author'>by " + library[e].author + "</span></div>" +
 							"<div class='card-bottom'><span class='pages'>" + library[e].pages + " pages</span>" +
-							"<span class='read-status'>Read? " + library[e].status + "</span></div>" +
+							"<span class='read-status'>Read? " + library[e].status + " <a href='#' style='display: " + editDisplay + "' onclick='changeStatus(" + e + ")'>Change Status</a></span></div>" +
 							"<div style='background: darkred; color: white; padding: 7px; cursor: pointer; display: " + editDisplay + "' onclick='deleteBook(" + deleteIndex + ")'>Delete</div></div>";
 		deleteIndex++;
 	}
